@@ -1,0 +1,7 @@
+#mvn
+**/target
+client-provider/logs/
+consumer-service/logs/
+
+#editors
+**/.idea
