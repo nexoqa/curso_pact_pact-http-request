@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 public class ClientController {
@@ -60,6 +62,38 @@ public class ClientController {
                     .ok()
                     .header("Content-type", "application/json")
                     .body(client);
+        }
+
+    }
+
+    @RequestMapping(value = "/client", method = DELETE, produces = "application/json")
+    private @ResponseBody
+            ResponseEntity<Void> deleteClient(@RequestBody User user) {
+        logger.info("deleting client -> " + user.toString());
+
+        if (clientService.isRegistered(user.getName())) {
+            clientService.deleteClient(user);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
+    }
+
+    @RequestMapping(value = "/client", method = PUT, produces = "application/json")
+    private @ResponseBody
+            ResponseEntity<Client> updateClient(@RequestBody User user) {
+        logger.info("updating client -> " + user.toString());
+
+        if (clientService.isRegistered(user.getName())) {
+            Client client = clientService.modifyClient(user);
+            return ResponseEntity
+                    .ok()
+                    .header("Content-type", "application/json")
+                    .body(client);
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            
         }
 
     }

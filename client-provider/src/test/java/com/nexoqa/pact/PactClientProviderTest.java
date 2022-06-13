@@ -35,4 +35,16 @@ public class PactClientProviderTest {
     public void toGetStateSubscribe() {
     }
 
+    @State("test consumer service -  un subscribe")
+    public void toGetStateUnSubscribe() {
+    }
+
+    @State("test consumer service -  un subscribe no user")
+    public void toGetStateUnSubscribeNoUser() {
+    }
+
+    @State("test consumer service -  modify subscription")
+    public void modifySubscription() {
+    }
+
 }

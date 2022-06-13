@@ -52,4 +52,15 @@ public class ClientService {
         return clients.get(name);
     }
 
+    public void deleteClient(User user) {
+        clients.remove(user.getName().toLowerCase());
+    }
+
+    public Client modifyClient(User user) {
+        Client existingClient = searchClient(user.getName().toLowerCase());
+        existingClient.setUser(user);
+        clients.replace(user.getName().toLowerCase(), existingClient);
+        return getClient(existingClient.getUser().getName());
+    }
+
 }

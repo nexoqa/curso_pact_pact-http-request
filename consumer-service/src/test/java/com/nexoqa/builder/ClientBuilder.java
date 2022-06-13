@@ -18,7 +18,8 @@ public class ClientBuilder {
                         generateRandomString(5),
                         "Street " + generateRandomString(6),
                         generateRandomInteger(18, 99),
-                        generateRandomInteger(911111111, 999999999)
+                        generateRandomInteger(911111111, 999999999),
+                        generateRandomString(10)+"@mail.com"
                 ),
                 true
         );

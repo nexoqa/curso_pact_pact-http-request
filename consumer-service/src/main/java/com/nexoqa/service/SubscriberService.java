@@ -28,4 +28,22 @@ public class SubscriberService {
         }
     }
 
+    public ResponseEntity<Void> unsubscribeUser(User user) {
+        HttpEntity<User> request = new HttpEntity<>(user);
+        try {
+            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.DELETE, request, Void.class);
+        } catch (HttpClientErrorException httpException) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    public ResponseEntity<Client> modifyUser(User user) {
+        HttpEntity<User> request = new HttpEntity<>(user);
+        try {
+            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.PUT, request, Client.class);
+        } catch (HttpClientErrorException httpException) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
 }
