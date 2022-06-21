@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,6 +27,16 @@ public class UserController {
     @RequestMapping(value = "/subscribe", method = POST, produces = "application/json")
     private ResponseEntity<Client> subscribeUser(@RequestBody User user) {
         return subscriberService.subscribeUser(user);
+    }
+
+    @RequestMapping(value = "/subscribe", method = RequestMethod.PUT, produces = "application/json")
+    private ResponseEntity<Client> updateSubscribedUser(@RequestBody User user) {
+        return subscriberService.updateSubscribedUser(user);
+    }
+
+    @RequestMapping(value = "/subscribe", method = RequestMethod.DELETE, produces = "application/json")
+    private ResponseEntity<Void> unSubscribeUser(@RequestBody User user) {
+        return subscriberService.unSubscribeUser(user);
     }
 
     @RequestMapping(value = "/email/send", method = POST, produces = "application/json")

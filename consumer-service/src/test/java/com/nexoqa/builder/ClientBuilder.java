@@ -17,11 +17,10 @@ public class ClientBuilder {
                         generateRandomString(5),
                         generateRandomString(5),
                         "Street " + generateRandomString(6),
+                        generateRandomString(10) + "@mail.com",
                         generateRandomInteger(18, 99),
-                        generateRandomInteger(911111111, 999999999)
-                ),
-                true
-        );
+                        generateRandomInteger(911111111, 999999999)),
+                true);
     }
 
 }

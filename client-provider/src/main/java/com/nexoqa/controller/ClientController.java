@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 @RestController
 public class ClientController {
@@ -25,8 +27,7 @@ public class ClientController {
     private ClientService clientService;
 
     @RequestMapping(value = "/client", method = GET, produces = "application/json")
-    private @ResponseBody
-    ResponseEntity<Client> getClient(@RequestParam(value = "name") String name) {
+    private @ResponseBody ResponseEntity<Client> getClient(@RequestParam(value = "name") String name) {
         logger.info("getting client -> " + name);
         Client requestedClient = clientService.getClient(name);
         return Optional
@@ -35,9 +36,33 @@ public class ClientController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @RequestMapping(value = "/client", method = DELETE, produces = "application/json")
+    private @ResponseBody ResponseEntity<Void> deleteClient(@RequestBody User user) {
+        logger.info("deleting client -> " + user.toString());
+        if (clientService.isRegistered(user.getName())) {
+            clientService.deleteClient(user);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @RequestMapping(value = "/client", method = PUT, produces = "application/json")
+    private @ResponseBody ResponseEntity<Client> udpateClient(@RequestBody User user) {
+        logger.info("modifing client -> " + user.toString());
+        if (clientService.isRegistered(user.getName())) {
+            Client requestedClient = clientService.updateClient(user);
+            return Optional
+                    .ofNullable(requestedClient)
+                    .map(client -> ResponseEntity.ok().body(requestedClient))
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
     @RequestMapping(value = "/clients", method = GET, produces = "application/json")
-    private @ResponseBody
-    ResponseEntity<Clients> getClients() {
+    private @ResponseBody ResponseEntity<Clients> getClients() {
         Clients requestedClients = clientService.getClients();
         logger.info("getting clients -> " + requestedClients.toString());
         return Optional
@@ -46,10 +71,8 @@ public class ClientController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
     @RequestMapping(value = "/client", method = POST, produces = "application/json")
-    private @ResponseBody
-            ResponseEntity<Client> createClient(@RequestBody User user) {
+    private @ResponseBody ResponseEntity<Client> createClient(@RequestBody User user) {
         logger.info("creating client -> " + user.toString());
 
         if (clientService.isRegistered(user.getName())) {

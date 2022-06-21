@@ -22,7 +22,28 @@ public class SubscriberService {
     public ResponseEntity<Client> subscribeUser(User user) {
         HttpEntity<User> request = new HttpEntity<>(user);
         try {
-            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.POST, request, Client.class);
+            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.POST, request,
+                    Client.class);
+        } catch (HttpClientErrorException httpException) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    public ResponseEntity<Void> unSubscribeUser(User user) {
+        HttpEntity<User> request = new HttpEntity<>(user);
+        try {
+            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.DELETE, request,
+                    Void.class);
+        } catch (HttpClientErrorException httpException) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
+
+    public ResponseEntity<Client> updateSubscribedUser(User user) {
+        HttpEntity<User> request = new HttpEntity<>(user);
+        try {
+            return new RestTemplate().exchange(getBackendUrl() + "/client-provider/client", HttpMethod.PUT, request,
+                    Client.class);
         } catch (HttpClientErrorException httpException) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
