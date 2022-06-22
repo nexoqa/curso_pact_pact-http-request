@@ -1,11 +1,11 @@
-2022-06-21 13:16:41,779 INFO o.s.b.StartupInfoLogger [main] Starting PactConsumerContractTest on jose-ojeda-macbook.local with PID 33451 (started by yc00043 in /Users/yc00043/nexoqa/pact/curso_pact_pact-http-request/consumer-service)
-2022-06-21 13:16:41,840 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.2.0.RELEASE, Spring v5.2.0.RELEASE
-2022-06-21 13:16:41,847 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
-2022-06-21 13:17:11,175 INFO o.s.b.a.e.w.EndpointLinksResolver [main] Exposing 2 endpoint(s) beneath base path '/actuator'
-2022-06-21 13:17:14,405 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2022-06-21 13:17:20,608 INFO o.s.s.c.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
-2022-06-21 13:17:26,265 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
-2022-06-21 13:17:26,990 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2022-06-21 13:17:27,866 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
-2022-06-21 13:17:30,144 INFO o.s.b.StartupInfoLogger [main] Started PactConsumerContractTest in 55.411 seconds (JVM running for 79.428)
-2022-06-21 13:17:52,165 INFO o.s.s.c.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-06-22 10:31:24,737 INFO o.s.b.StartupInfoLogger [main] Starting PactConsumerContractTest on jose-ojeda-macbook.local with PID 16799 (started by yc00043 in /Users/yc00043/nexoqa/pact/curso_pact_pact-http-request/consumer-service)
+2022-06-22 10:31:24,767 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v2.2.0.RELEASE, Spring v5.2.0.RELEASE
+2022-06-22 10:31:24,769 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2022-06-22 10:31:32,154 INFO o.s.b.a.e.w.EndpointLinksResolver [main] Exposing 2 endpoint(s) beneath base path '/actuator'
+2022-06-22 10:31:33,034 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-06-22 10:31:34,290 INFO o.s.s.c.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-22 10:31:35,793 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Context refreshed
+2022-06-22 10:31:35,936 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2022-06-22 10:31:36,183 INFO s.d.s.w.s.ApiListingReferenceScanner [main] Scanning for api listing references
+2022-06-22 10:31:36,814 INFO o.s.b.StartupInfoLogger [main] Started PactConsumerContractTest in 14.131 seconds (JVM running for 19.088)
+2022-06-22 10:31:42,214 INFO o.s.s.c.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'

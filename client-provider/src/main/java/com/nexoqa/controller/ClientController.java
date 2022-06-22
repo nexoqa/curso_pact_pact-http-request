@@ -27,9 +27,9 @@ public class ClientController {
     private ClientService clientService;
 
     @RequestMapping(value = "/client", method = GET, produces = "application/json")
-    private @ResponseBody ResponseEntity<Client> getClient(@RequestParam(value = "name") String name) {
-        logger.info("getting client -> " + name);
-        Client requestedClient = clientService.getClient(name);
+    private @ResponseBody ResponseEntity<Client> getClient(@RequestParam(value = "id") Integer id) {
+        logger.info("getting client -> " + id);
+        Client requestedClient = clientService.getClient(id);
         return Optional
                 .ofNullable(requestedClient)
                 .map(client -> ResponseEntity.ok().body(requestedClient))
@@ -39,7 +39,7 @@ public class ClientController {
     @RequestMapping(value = "/client", method = DELETE, produces = "application/json")
     private @ResponseBody ResponseEntity<Void> deleteClient(@RequestBody User user) {
         logger.info("deleting client -> " + user.toString());
-        if (clientService.isRegistered(user.getName())) {
+        if (clientService.isRegistered(user.getId())) {
             clientService.deleteClient(user);
             return ResponseEntity.ok().build();
         } else {
@@ -50,7 +50,7 @@ public class ClientController {
     @RequestMapping(value = "/client", method = PUT, produces = "application/json")
     private @ResponseBody ResponseEntity<Client> udpateClient(@RequestBody User user) {
         logger.info("modifing client -> " + user.toString());
-        if (clientService.isRegistered(user.getName())) {
+        if (clientService.isRegistered(user.getId())) {
             Client requestedClient = clientService.updateClient(user);
             return Optional
                     .ofNullable(requestedClient)
@@ -75,7 +75,7 @@ public class ClientController {
     private @ResponseBody ResponseEntity<Client> createClient(@RequestBody User user) {
         logger.info("creating client -> " + user.toString());
 
-        if (clientService.isRegistered(user.getName())) {
+        if (clientService.isRegistered(user.getId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             Client client = clientService.createClient(user);

@@ -14,6 +14,7 @@ public class ClientBuilder {
 
         return new Client(
                 new User(
+                        generateRandomInteger(100, 1000),
                         generateRandomString(5),
                         generateRandomString(5),
                         "Street " + generateRandomString(6),

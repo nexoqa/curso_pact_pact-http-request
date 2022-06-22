@@ -10,6 +10,7 @@ import lombok.*;
 @EqualsAndHashCode
 public class User {
 
+    private Integer id;
     private String name;
     private String lastName;
     private String address;

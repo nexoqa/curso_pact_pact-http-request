@@ -76,6 +76,7 @@ public class PactConsumerContractTest {
                                 .minArrayLike("clients", 1)
                                 .booleanType("activated")
                                 .object("user")
+                                .integerType("id")
                                 .stringType("name")
                                 .stringType("lastName")
                                 .stringType("address")
@@ -84,6 +85,7 @@ public class PactConsumerContractTest {
                                 .integerType("phoneNumber");
 
                 PactDslJsonBody user = new PactDslJsonBody()
+                                .integerType("id", userData.getId())
                                 .stringType("name", userData.getName())
                                 .stringType("lastName", userData.getLastName())
                                 .stringType("address", userData.getAddress())
@@ -94,6 +96,7 @@ public class PactConsumerContractTest {
                 PactDslJsonBody client = new PactDslJsonBody()
                                 .booleanType("activated")
                                 .object("user")
+                                .integerType("id", userData.getId())
                                 .stringType("name", userData.getName())
                                 .stringType("lastName", userData.getLastName())
                                 .stringType("address", userData.getAddress())
@@ -136,6 +139,7 @@ public class PactConsumerContractTest {
                 User userData = clientData.getUser();
 
                 PactDslJsonBody user = new PactDslJsonBody()
+                                .integerType("id", userData.getId())
                                 .stringType("name", userData.getName())
                                 .stringType("lastName", userData.getLastName())
                                 .stringType("address", userData.getAddress())
@@ -146,6 +150,7 @@ public class PactConsumerContractTest {
                 PactDslJsonBody client = new PactDslJsonBody()
                                 .booleanType("activated")
                                 .object("user")
+                                .integerType("id", userData.getId())
                                 .stringType("name", userData.getName())
                                 .stringType("lastName", userData.getLastName())
                                 .stringType("address", userData.getAddress())
@@ -186,6 +191,7 @@ public class PactConsumerContractTest {
                 User userData = clientData.getUser();
 
                 PactDslJsonBody user = new PactDslJsonBody()
+                                .integerType("id", userData.getId())
                                 .stringType("name", userData.getName())
                                 .stringType("lastName", userData.getLastName())
                                 .stringType("address", userData.getAddress())
@@ -213,6 +219,7 @@ public class PactConsumerContractTest {
 
                 clientToUpdate = new Client(
                                 new User(
+                                                2,
                                                 "Name",
                                                 "LastName",
                                                 "Address",
@@ -222,8 +229,8 @@ public class PactConsumerContractTest {
                                 true);
 
                 clientUpdated = new Client(
-                                new User(
-                                                "Name",
+                                new User(2,
+                                                "Name2",
                                                 "LastName1",
                                                 "Address1",
                                                 "email1@email.com",
@@ -232,6 +239,7 @@ public class PactConsumerContractTest {
                                 true);
 
                 PactDslJsonBody user = new PactDslJsonBody()
+                                .integerType("id", clientToUpdate.getUser().getId())
                                 .stringType("name", clientToUpdate.getUser().getName())
                                 .stringType("lastName", clientToUpdate.getUser().getLastName())
                                 .stringType("address", clientToUpdate.getUser().getAddress())
@@ -242,6 +250,7 @@ public class PactConsumerContractTest {
                 PactDslJsonBody client = new PactDslJsonBody()
                                 .booleanType("activated", true)
                                 .object("user")
+                                .integerType("id", clientToUpdate.getUser().getId())
                                 .stringType("name", clientToUpdate.getUser().getName())
                                 .stringType("lastName", clientToUpdate.getUser().getLastName())
                                 .stringType("address", clientToUpdate.getUser().getAddress())
@@ -250,6 +259,7 @@ public class PactConsumerContractTest {
                                 .integerType("phoneNumber", clientToUpdate.getUser().getPhoneNumber());
 
                 PactDslJsonBody userModified = new PactDslJsonBody()
+                                .integerType("id", clientToUpdate.getUser().getId())
                                 .stringType("name", clientUpdated.getUser().getName())
                                 .stringType("lastName", clientUpdated.getUser().getLastName())
                                 .stringType("address", clientUpdated.getUser().getAddress())
@@ -260,6 +270,7 @@ public class PactConsumerContractTest {
                 PactDslJsonBody clientModified = new PactDslJsonBody()
                                 .booleanType("activated", true)
                                 .object("user")
+                                .integerType("id", clientUpdated.getUser().getId())
                                 .stringType("name", clientUpdated.getUser().getName())
                                 .stringType("lastName", clientUpdated.getUser().getLastName())
                                 .stringType("address", clientUpdated.getUser().getAddress())
@@ -298,6 +309,7 @@ public class PactConsumerContractTest {
 
                 clientToUpdateFail = new Client(
                                 new User(
+                                                1,
                                                 "Name",
                                                 "LastName",
                                                 "Address",
@@ -307,6 +319,7 @@ public class PactConsumerContractTest {
                                 true);
 
                 PactDslJsonBody user = new PactDslJsonBody()
+                                .integerType("id", clientToUpdateFail.getUser().getId())
                                 .stringType("name", clientToUpdateFail.getUser().getName())
                                 .stringType("lastName", clientToUpdateFail.getUser().getLastName())
                                 .stringType("address", clientToUpdateFail.getUser().getAddress())
