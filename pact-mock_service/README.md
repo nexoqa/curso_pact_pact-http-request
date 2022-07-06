@@ -23,7 +23,7 @@ docker run -dit \
 ```
 ## Execute script example
 ```
-#This script uses the `consummer-interaction.json` and `consummer-provider.json`
+#This script uses the `consumer-interaction.json` and `consumer-provider.json`
 ./example
 ```
 
