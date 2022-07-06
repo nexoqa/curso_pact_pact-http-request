@@ -10,6 +10,7 @@ import lombok.*;
 public class Client {
 
     private User user;
-    private boolean activated;
+    private BloodType bloodType;
+    // private boolean activated;
 
 }

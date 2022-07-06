@@ -1,5 +1,6 @@
 package com.nexoqa.service;
 
+import com.nexoqa.model.BloodType;
 import com.nexoqa.model.Client;
 import com.nexoqa.model.Clients;
 import com.nexoqa.model.User;
@@ -30,7 +31,7 @@ public class ClientService {
     }
 
     public Client createClient(User user) {
-        Client newClient = new Client(user, true);
+        Client newClient = new Client(user, new BloodType("A", "+"));
         insertClient(newClient);
         return getClient(newClient.getUser().getName());
     }

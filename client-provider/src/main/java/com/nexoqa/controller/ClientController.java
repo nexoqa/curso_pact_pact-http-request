@@ -25,8 +25,7 @@ public class ClientController {
     private ClientService clientService;
 
     @RequestMapping(value = "/client", method = GET, produces = "application/json")
-    private @ResponseBody
-    ResponseEntity<Client> getClient(@RequestParam(value = "name") String name) {
+    private @ResponseBody ResponseEntity<Client> getClient(@RequestParam(value = "name") String name) {
         logger.info("getting client -> " + name);
         Client requestedClient = clientService.getClient(name);
         return Optional
@@ -36,8 +35,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/clients", method = GET, produces = "application/json")
-    private @ResponseBody
-    ResponseEntity<Clients> getClients() {
+    private @ResponseBody ResponseEntity<Clients> getClients() {
         Clients requestedClients = clientService.getClients();
         logger.info("getting clients -> " + requestedClients.toString());
         return Optional
@@ -46,16 +44,15 @@ public class ClientController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
     @RequestMapping(value = "/client", method = POST, produces = "application/json")
-    private @ResponseBody
-            ResponseEntity<Client> createClient(@RequestBody User user) {
+    private @ResponseBody ResponseEntity<Client> createClient(@RequestBody User user) {
         logger.info("creating client -> " + user.toString());
 
         if (clientService.isRegistered(user.getName())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } else {
             Client client = clientService.createClient(user);
+            logger.info("client -> " + client.toString());
             return ResponseEntity
                     .ok()
                     .header("Content-type", "application/json")
